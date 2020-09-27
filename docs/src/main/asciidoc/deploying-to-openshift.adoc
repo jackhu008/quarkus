@@ -59,6 +59,13 @@ Furthermore, the items provided by `io.quarkus.deployment.ApplicationConfig` aff
 
 === Build and deply (in separate steps)
 
+If OpenShift extension was not included during the bootstraping of the project nor added subsequently  (check pom.xml file for it), then add OpenShift as a dependency before building:
+
+[source, subs=attributes+]
+----
+ ./mvnw quarkus:add-extension -Dextensions="openshift"
+----
+ 
 Building is handled by the link:container-image#s2i[container-image-s2i] extension. To trigger a build:
 
 [source, subs=attributes+]
@@ -107,6 +114,13 @@ quarkus.container-image.builder=jib
 ----
 
 === Build and Deploy (in a single step)
+
+If OpenShift extension was not included during the bootstraping of the project nor added subsequently  (check pom.xml file for it), then add OpenShift as a dependency before building:
+
+[source, subs=attributes+]
+----
+ ./mvnw quarkus:add-extension -Dextensions="openshift"
+----
 
 To trigger a build and deployment in a single step:
 
