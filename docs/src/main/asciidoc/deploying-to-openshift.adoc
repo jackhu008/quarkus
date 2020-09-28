@@ -57,9 +57,9 @@ By adding this dependency, we now have the ability to configure the OpenShift re
 The configuration items that are available can be found in: `io.quarkus.kubernetes.deployment.OpenShiftConfig` class.
 Furthermore, the items provided by `io.quarkus.deployment.ApplicationConfig` affect the OpenShift resources.
 
-=== Build and deply (in separate steps)
+=== Build and Deploy (in separate steps)
 
-If OpenShift extension was not included during the bootstraping of the project nor added subsequently  (check pom.xml file for it), then add OpenShift as a dependency before building:
+If the OpenShift extension was not included during the bootstraping of the project nor was it added subsequently (check pom.xml file for it), then it can be added like this:
 
 [source, subs=attributes+]
 ----
@@ -115,7 +115,7 @@ quarkus.container-image.builder=jib
 
 === Build and Deploy (in a single step)
 
-If OpenShift extension was not included during the bootstraping of the project nor added subsequently  (check pom.xml file for it), then add OpenShift as a dependency before building:
+If the OpenShift extension was not included during the bootstraping of the project nor was it added subsequently (check pom.xml file for it), then it can be added like this:
 
 [source, subs=attributes+]
 ----
@@ -129,7 +129,7 @@ To trigger a build and deployment in a single step:
 ./mvnw clean package -Dquarkus.kubernetes.deploy=true
 ----
 
-The command above will build a jar file locally, subsequently trigger a container image build and then apply the generated OpenShift resources, right after.
+The aforementioned command will build a jar file locally, trigger a container image build and then apply the generated OpenShift resources.
 The generated resources are using OpenShift's `DeploymentConfig` that is configured to automatically trigger a redeployment when a change in the `ImageStream` is noticed.
 In other words, any container image build after the initial deployment will automatically trigger redeployment, without the need to delete, update or re-apply the generated resources.
 
